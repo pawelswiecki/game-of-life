@@ -1,37 +1,11 @@
-<!-- 
-           C-64 PALETTE
-    #   name        hex
-    0   black       #000000
-    1   white       #FFFFFF
-    2   red         #68372B
-    3   cyan        #70A4B2
-    4   purple      #6F3D86
-    5   green       #588D43
-    6   blue        #352879
-    7   yellow      #B8C76F
-    8   orange      #6F4F25
-    9   brown       #433900
-    A   light red   #9A6759
-    B   dark grey   #444444
-    C   grey        #6C6C6C
-    D   light green #9AD284
-    E   light blue  #6C5EB5
-    F   light grey  #959595
--->
-
-
 <!doctype html> 
 
 <html>
     <head>
         <title>Life!</title>
-
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
         <link rel="stylesheet" type="text/css" href="styles.css">
-
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
         <script type="text/javascript" src="frontend.js" ></script>
         <script type="text/javascript" src="backend.js" ></script>
     </head>
@@ -43,15 +17,15 @@
             </canvas>
         </div>
 
-        <div class="right">            
+        <div class="right">
             <div class="right-center">
                 <span class="header2">* cs50 * Final Project *</span><br/><br/><br/>
-                <span class="header1">Conway's Game of Life</span><br/><br/><br/>                
+                <span class="header1">Conway's Game of Life</span><br/><br/><br/>
                 <span>by <a id="mail" href="mailto:pawel.swiecki@gmail.com">pawel.swiecki@gmail.com</a></span>
             </div>
             
             <br/>
-            <div class="right-center">                
+            <div class="right-center">
                 <input id="live" class="button1 active" value="live!" type="button"/>
                 <span class="block"></span>
                 <input id="stop" class="button1 active" value="stop" type="button"/>
@@ -65,7 +39,7 @@
             </div>
             <br/>
 
-            <div class="right-center">                
+            <div class="right-center">
                 simulate <input id="form1" class="form" value="1" type="text"/> generation(s)
             </div>
             <br/>
@@ -80,7 +54,7 @@
                 <input id="pattern-pulsar" class="button1 active drag-button" value="pulsar" type="button"/>
                 <input id="pattern-glider" class="button1 active drag-button" value="glider" type="button"/>
                 <input id="pattern-glider-gun" class="button1 active drag-button" value="glider gun" type="button"/><br/><br/>
-                <input id="pattern-r-pentomino" class="button1 active drag-button" value="r-pentomino" type="button"/>                
+                <input id="pattern-r-pentomino" class="button1 active drag-button" value="r-pentomino" type="button"/>
             </div>
             <br/>
             
@@ -94,7 +68,7 @@
                         <li>Dead cell with exactly three live neighbours becomes a live cell (reproduction).</li>
                     </ol><br/>
                     * * *
-                </div>                
+                </div>
             </div>
             <br/>
         </div>
