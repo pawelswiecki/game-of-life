@@ -1,0 +1,123 @@
+
+/*        C-64 PALETTE
+    #   name        hex
+    0   black       #000000
+    1   white       #FFFFFF
+    2   red         #68372B
+    3   cyan        #70A4B2
+    4   purple      #6F3D86
+    5   green       #588D43
+    6   blue        #352879
+    7   yellow      #B8C76F
+    8   orange      #6F4F25
+    9   brown       #433900
+    A   light red   #9A6759
+    B   dark grey   #444444
+    C   grey        #6C6C6C
+    D   light green #9AD284
+    E   light blue  #6C5EB5
+    F   light grey  #959595
+*/
+
+@font-face {
+    font-family: 'C64';
+    src: url('fonts/C64_Pro_Mono-STYLE.eot'); /* IE9 Compat Modes */
+    src: url('fonts/C64_Pro_Mono-STYLE.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('fonts/C64_Pro_Mono-STYLE.woff2') format('woff2'), /* Super Modern Browsers */
+         url('fonts/C64_Pro_Mono-STYLE.woff') format('woff'), /* Pretty Modern Browsers */
+         url('fonts/C64_Pro_Mono-STYLE.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('fonts/C64_Pro_Mono-STYLE.svg#svgFontName') format('svg'); /* Legacy iOS */
+}          
+
+body {
+    background-color: #6C5EB5;
+    font-family: "C64", monospace;
+    font-size: 15px;
+    color: #6C5EB5;
+
+    /* this stuff disables selecting on this page so user can click freely */
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;    
+}
+
+div.left {
+    padding: 5px;
+    border-radius: 5px;
+    float: left;
+    background-color: #352879;
+    /*cursor: crosshair;*/
+}
+div.right {                
+    text-align:center;
+    background-color: #6C5EB5;                
+}
+
+div.right-center {
+    text-align:center;
+    
+    background-color: #352879;
+    display:inline-block;
+    float: center;
+    padding: 20px;                
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 450px;
+}
+
+.header1 {
+    /*color: #70A4B2;*/
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.header2 {
+    color: #6C5EB5;
+}
+
+.header3 {
+    color: #FFFFFF;
+}
+
+.list1 {
+    text-align:left
+}
+
+#mail {
+    color: #6C5EB5;
+    font-size: 15px;
+}
+
+.block
+{
+    display:inline-block;
+    width:10px;
+}
+
+.form
+{
+    font-family: "C64", monospace;
+    width: 70px;
+    background: #6C5EB5;
+    color: #FFFFFF;
+    border: 0px;
+    padding: 5px;
+}
+
+.button1
+{
+    font-family: "C64", monospace;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 15px;    
+    background: #6C5EB5;
+    border: 0px;
+    padding: 5px;
+}
+
+.drag-button
+{
+    cursor: move;
+}
