@@ -186,52 +186,24 @@ $(document).ready(function() {
     });
 
     $("#pattern-pulsar").mousedown(function(event) {
-        if (event.which === 1) {
-            var pattern = [[0, -2], [0, 2],
-                           [-2, -2], [-2, -1], [-2, 0], [-2, 1], [-2, 2],
-                           [2, -2], [2, -1], [2, 0], [2, 1], [2, 2]]
-        
-            mouse.dragged_pattern = pattern;
+        if (event.which === 1) {        
+            mouse.dragged_pattern = patterns["pulsar"];
             mouse.left_button_drag = true;
         }                    
     });
 
-    $("#pattern-glider").mousedown(function() {
-        var pattern = [[-1, 0], [0, -1], [1, -1], [1, 0], [1, 1]];
-        
-        mouse.dragged_pattern = pattern;
+    $("#pattern-glider").mousedown(function() {        
+        mouse.dragged_pattern = patterns["glider"];
         mouse.left_button_drag = true;
     });
 
     $("#pattern-glider-gun").mousedown(function() {
-        var pattern = [[-19, -15], [-19, -14], [-18, -15],
-                       [-18, -14], [-9, -15], [-9, -14], 
-                       [-9, -13], [-8, -16], [-8, -12], 
-                       [-7, -17], [-7, -11], [-6, -17], 
-                       [-6, -11], [-5, -14], [-4, -16], 
-                       [-4, -12], [-3, -15], [-3, -14], 
-                       [-3, -13], [-2, -14], [1, -17], 
-                       [1, -16], [1, -15], [2, -17], 
-                       [2, -16], [2, -15], [3, -18], 
-                       [3, -14], [5, -19], [5, -18], 
-                       [5, -14], [5, -13], [15, -17], 
-                       [15, -16], [16, -17], [16, -16], 
-                       [15, 2], [15, 3], [15, 5], 
-                       [16, 2], [16, 3], [16, 5], 
-                       [16, 6], [16, 7], [17, 8], 
-                       [18, 2], [18, 3], [18, 5], 
-                       [18, 6], [18, 7], [19, 3], 
-                       [19, 5], [20, 3], [20, 5], 
-                       [21, 4]];
-        
-        mouse.dragged_pattern = pattern;
+        mouse.dragged_pattern = patterns["glider-gun"];
         mouse.left_button_drag = true;
     });
     
-    $("#pattern-r-pentomino").mousedown(function() {
-        var pattern = [[0, 0], [1, -1], [0, -1], [-1, 0], [0, 1]];
-        
-        mouse.dragged_pattern = pattern;
+    $("#pattern-r-pentomino").mousedown(function() {        
+        mouse.dragged_pattern = patterns["r-pentomino"];
         mouse.left_button_drag = true;
     });
 
