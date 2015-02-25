@@ -2,6 +2,8 @@
 ### The Game
 [Conway's Game of Life](http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) implemented in JavaScript with jQuery.
 
+The game is hosted [here](http://pawelswiecki.github.io/game-of-life/).
+
 With left mouse button you can animate dead cells, as well as kill living cells on board to the left. Use `Live` button to apply the following rules to them:
 
 * Alive cell dies if has fewer than two live neighbours (under-population).
