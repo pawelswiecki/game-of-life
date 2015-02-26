@@ -2,6 +2,8 @@ var DIMENSIONS = [75, 60];
 var MARGIN_RATIO = 10;
 var CANVAS_ID = "#canv1";
 
+var HISTOGRAM_SIZE = 0;
+
 // LOGIC: 0 or 1 = dead; 2 = alive 
 // GRAPHICS: 0 = not visible; 1 and 2 = visible
 var Cellstate = {};
@@ -14,21 +16,33 @@ board.cell_size = []; // array of x and y-size
 board.margin; // array of x and y-dimensions            
 board.delay; // delay between generations
 board.inter1; // interval for delay
-board.is_running = false;            
+board.is_running = false;
+board.context = null; // $(CANVAS_ID)[0].getContext("2d");         
 
 var mouse = {};
 mouse.left_button_drawing = false;            
 mouse.value_on_down = Cellstate.dead;            
 mouse.left_button_drag = false;
-mouse.dragged_pattern = [];            
+mouse.dragged_pattern = [];
+
+// array with historical data about # of living cells
+var histogram_data = [];
 
 // **************************************************************************
 // ******************************** FRONT-END *******************************
 // **************************************************************************
 
 $(document).ready(function() {
+    board.context = $(CANVAS_ID)[0].getContext("2d");
+
+    HISTOGRAM_SIZE = $('#histogram').width();    
+    for (var x = 0; x < HISTOGRAM_SIZE; x++) {
+        histogram_data.push(0);
+    };
+    console.log(histogram_data);
+
     board.delay = $("#form_delay").val();
-    redraw_all();                
+    redraw_all();
 
     $(CANVAS_ID).mousedown(function(event) {
         // left mouse button was pressed
@@ -230,7 +244,7 @@ $(document).ready(function() {
     // on canvas and updating living cells counter
     function redraw_all() {
         var canvas = $(CANVAS_ID);
-        var context = canvas[0].getContext("2d");
+        
 
         var width = $(window).width() - 600;
         var height = $(window).height() - 50;
@@ -257,24 +271,29 @@ $(document).ready(function() {
                 };
             
                 // draws a real cell (living, dying or dead)
-                draw_a_cell(context, x, y, fill_style);
+                draw_a_cell(board.context, x, y, fill_style);
 
                 // draws a drag&drop ghost-cell on top of the real ones
                 if (ghost_grid.contents[x][y]) {
                     // draw the cell itself
                     var fill_style = "rgba(0, 0, 0, 0.6)";
-                    draw_a_cell(context, x, y, fill_style);
+                    draw_a_cell(board.context, x, y, fill_style);
 
                     // draw cell's border
                     var line_width = 1;
                     var stroke_style = "#000000";
-                    draw_cells_border(context, x, y, line_width, stroke_style);
+                    draw_cells_border(board.context, x, y, line_width, stroke_style);
                 };
             };
         };
 
-        // updating cell counter
+        // updating cell counter        
+        update_counter_and_histogram(cells_alive);
+    };
+
+    function update_counter_and_histogram(cells_alive) {
         $("#counter").html(cells_alive);
+
     };
 
     // draws a cell on canvas
