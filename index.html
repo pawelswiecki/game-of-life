@@ -20,14 +20,13 @@
         </div>
 
         <div class="right">
-            <div class="right-center big">
-                <span class="header2">* * *</span><br/><br/><br/>
+            <div class="right-center" style="margin-top: 0px;">                
                 <span class="header1">Conway's Game of Life</span><br/><br/><br/>
                 <span>by <a id="mail" href="mailto:pawel.swiecki@gmail.com">pawel.swiecki@gmail.com</a></span>
             </div>
             
             <br/>
-            <div class="right-center big">
+            <div class="right-center">
                 <input id="live" class="button1 active" value="live!" type="button"/>
                 <span class="block"></span>
                 <input id="stop" class="button1 active" value="stop" type="button"/>
@@ -36,21 +35,25 @@
             </div>
 
             <br/>
-            <div class="right-center small"><span class="header3">Living: <span id="counter"></span></span></div>
-            <div class="right-center small">...</div>
+            <div class="right-center">
+                <div class="header3">Living: <span id="counter"></span></div><br/>
+
+                <canvas id="histogram" width="430" height="77">
+                    HTML5 Canvas not supported
+                </canvas></div>          
             <br/>
 
-            <div class="right-center big">
+            <div class="right-center">
                 simulate <input id="form1" class="form" value="1" type="text"/> generation(s)
             </div>
             <br/>
 
-            <div class="right-center big">
+            <div class="right-center">
                 <input id="form_delay" class="form" value="100" type="text"/> ms between generations
             </div>
             <br/>
 
-            <div class="right-center big">
+            <div class="right-center">
                 <span class="header3">Drag&Drop Patterns</span><br/><br/>
                 <input id="pattern-pulsar" class="button1 active drag-button" value="pulsar" type="button"/>
                 <input id="pattern-glider" class="button1 active drag-button" value="glider" type="button"/>
@@ -59,7 +62,7 @@
             </div>
             <br/>
             
-            <div class="right-center big">
+            <div class="right-center">
                 <span class="header3">Rules</span>
                 <div  style="padding-left: 15px; font-size: 12px;">
                     <ol class="list1" type="1">
@@ -67,8 +70,7 @@
                         <li>Alive cell dies if has more than three live neighbours (overcrowding).</li><br/>
                         <li>Alive cell lives on to the next generation if has two or three live neighbours.</li><br/>
                         <li>Dead cell with exactly three live neighbours becomes a live cell (reproduction).</li>
-                    </ol><br/>
-                    * * *
+                    </ol>
                 </div>
             </div>
             <br/>

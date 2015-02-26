@@ -51,27 +51,20 @@ div.left {
     /*cursor: crosshair;*/
 }
 div.right {                
-    text-align:center;
-    background-color: #6C5EB5;                
+    text-align: center;
+    background-color: #6C5EB5;
 }
 
-div.right-center {
-    text-align:center;
-    
+div.right-center {    
     background-color: #352879;
     display:inline-block;
     float: center;
-    padding: 20px;                
+                
     border-radius: 5px;
-    margin-top: 10px;    
-}
-
-div.big {    
-    width: 450px;
-}
-
-div.small {    
-    width: 197px;
+    margin-top: 10px;   
+    width: 450px; 
+    text-align: center;    
+    padding: 20px;
 }
 
 .header1 {
