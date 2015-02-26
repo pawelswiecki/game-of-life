@@ -63,8 +63,15 @@ div.right-center {
     float: center;
     padding: 20px;                
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 10px;    
+}
+
+div.big {    
     width: 450px;
+}
+
+div.small {    
+    width: 197px;
 }
 
 .header1 {
