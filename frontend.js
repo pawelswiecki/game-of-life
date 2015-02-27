@@ -17,7 +17,8 @@ board.margin; // array of x and y-dimensions
 board.delay; // delay between generations
 board.inter1; // interval for delay
 board.is_running = false;
-board.context = null; // $(CANVAS_ID)[0].getContext("2d");         
+board.context = null; // $(CANVAS_ID)[0].getContext("2d");
+board.cells_alive = 0;
 
 var mouse = {};
 mouse.left_button_drawing = false;            
@@ -26,7 +27,12 @@ mouse.left_button_drag = false;
 mouse.dragged_pattern = [];
 
 // array with historical data about # of living cells
-var histogram_data = [];
+var histogram = {};
+histogram.data1 = null;
+histogram.context = null; // $("#histogram")[0].getContext("2d");
+histogram.heightof = 0;
+histogram.widthof = 0;
+
 
 // **************************************************************************
 // ******************************** FRONT-END *******************************
@@ -35,15 +41,19 @@ var histogram_data = [];
 $(document).ready(function() {
     board.context = $(CANVAS_ID)[0].getContext("2d");
 
-    HISTOGRAM_SIZE = $('#histogram').width();    
-    for (var x = 0; x < HISTOGRAM_SIZE; x++) {
-        histogram_data.push(0);
+    // setting up histogram    
+    histogram.context = $("#histogram")[0].getContext("2d");
+    histogram.widthof = $('#histogram').width();
+    histogram.heightof = $('#histogram').height();
+    histogram.data1 = FixedQueue(size=histogram.widthof, initialValues=[]);
+    for (var x = 0; x < histogram.widthof; x++) {
+        histogram.data1.push(0);
     };
-    console.log(histogram_data);
 
     board.delay = $("#form_delay").val();
     redraw_all();
 
+    // HANDLERS
     $(CANVAS_ID).mousedown(function(event) {
         // left mouse button was pressed
         if(event.which === 1) {
@@ -249,7 +259,7 @@ $(document).ready(function() {
         var width = $(window).width() - 600;
         var height = $(window).height() - 50;
 
-        var cells_alive = 0;                
+        board.cells_alive = 0;
 
         resize_canvas(canvas, width, height);
         
@@ -259,7 +269,7 @@ $(document).ready(function() {
                 // --alive
                 if (main_grid.contents[x][y] == Cellstate.alive) {
                     var fill_style = "#FFFFFF";
-                    cells_alive++;
+                    board.cells_alive++;
                 }
                 // --dying
                 else if (main_grid.contents[x][y] == Cellstate.dying) {
@@ -288,11 +298,21 @@ $(document).ready(function() {
         };
 
         // updating cell counter        
-        update_counter_and_histogram(cells_alive);
+        update_counter_and_histogram();
     };
 
-    function update_counter_and_histogram(cells_alive) {
-        $("#counter").html(cells_alive);
+    function update_counter_and_histogram() {
+        $("#counter").html(board.cells_alive);         
+
+        histogram.context.fillStyle = "#352879";
+        histogram.context.fillRect(0, 0, histogram.widthof, histogram.heightof);
+
+        histogram.context.fillStyle = "#6C5EB5";
+        
+        for (var i = 0; i < histogram.widthof; i++) {
+            histogram.context.fillRect(i, histogram.heightof,
+                                       1, -histogram.data1[i]);
+        };
 
     };
 

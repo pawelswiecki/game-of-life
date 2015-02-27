@@ -99,6 +99,8 @@ function next_generation() {
     };
 
     main_grid.contents = temp_grid.contents;
+
+    histogram.data1.unshift(board.cells_alive);
 }
 
 // returns #_of_true_neighbors
