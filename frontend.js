@@ -1,5 +1,4 @@
-var DIMENSIONS = [75, 60];
-var SIZE = DIMENSIONS[0] * DIMENSIONS[1];
+var DIMENSIONS = [115, 80];
 var MARGIN_RATIO = 10;
 var CANVAS_ID = "#canv1";
 
@@ -14,8 +13,7 @@ Cellstate.alive = 2;
 
 var board = {};
 board.cell_size = []; // array of x and y-size
-board.margin; // array of x and y-dimensions            
-board.delay; // delay between generations
+board.margin; // array of x and y-dimensions
 board.inter1; // interval for delay
 board.is_running = false;
 board.context = null; // $(CANVAS_ID)[0].getContext("2d");
@@ -50,8 +48,7 @@ $(document).ready(function() {
     histogram.heightof = $('#histogram').height();
     histogram.max = histogram.heightof;
     histogram.data1 = populate_fixedqueue(size=histogram.widthof, value=0);
-
-    board.delay = $("#form_delay").val();
+    
     redraw_all();
 
     // HANDLERS
@@ -180,13 +177,7 @@ $(document).ready(function() {
         if ((rounds > 0) && !board.is_running) {
             board.is_running = true;
             var round_nr = 0;
-
-            if (rounds == 1) {
-                board.inter1 = setInterval(one_round, 0);
-            }
-            else {
-                board.inter1 = setInterval(one_round, board.delay);
-            };
+            board.inter1 = setInterval(one_round, 0);            
         };
     });
 
@@ -203,14 +194,7 @@ $(document).ready(function() {
         histogram.data1 = populate_fixedqueue(size=histogram.widthof, value=0);
         histogram.max = histogram.heightof;
         redraw_all();
-    }); 
-
-    $("#form_delay").change(function(){
-        var value = $("#form_delay").val();
-        if (value >= 0) {
-            board.delay = value
-        };                    
-    });
+    });     
 
     $("#pattern-pulsar").mousedown(function(event) {
         if (event.which === 1) {        
@@ -254,7 +238,7 @@ $(document).ready(function() {
     };           
 
     // function drawing real (living, dying or dead) and ghost cells
-    // on canvas and updating living cells counter
+    // on canvas and calling update_counter_and_histogram()
     function redraw_all() {
         var canvas = $(CANVAS_ID);        
 
