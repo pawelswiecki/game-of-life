@@ -13,5 +13,6 @@ With left mouse button you can animate dead cells, as well as kill living cells 
 
 ### Sources
 
-* Commodore 64 font taken from: [http://style64.org/c64-truetype](http://style64.org/c64-truetype).
-* Commodore 64 color palette taken from: [http://www.pepto.de/projects/colorvic](http://www.pepto.de/projects/colorvic).
+* Commodore 64 font from: [http://style64.org/c64-truetype](http://style64.org/c64-truetype).
+* Commodore 64 color palette from: [http://www.pepto.de/projects/colorvic](http://www.pepto.de/projects/colorvic).
+* FixedQueue data type by Ben Nadel from: [https://gist.github.com/bennadel/9760671](https://gist.github.com/bennadel/9760671).
