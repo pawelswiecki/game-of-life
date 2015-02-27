@@ -48,10 +48,8 @@ $(document).ready(function() {
     histogram.context = $("#histogram")[0].getContext("2d");
     histogram.widthof = $('#histogram').width();
     histogram.heightof = $('#histogram').height();
-    histogram.data1 = FixedQueue(size=histogram.widthof, initialValues=[]);
-    for (var x = 0; x < histogram.widthof; x++) {
-        histogram.data1.push(0);
-    };
+    histogram.max = histogram.heightof;
+    histogram.data1 = populate_fixedqueue(size=histogram.widthof, value=0);
 
     board.delay = $("#form_delay").val();
     redraw_all();
@@ -202,6 +200,7 @@ $(document).ready(function() {
         main_grid = new Grid(DIMENSIONS, Cellstate.dead);                    
 
         board.is_running = false;
+        histogram.data1 = populate_fixedqueue(size=histogram.widthof, value=0);
         redraw_all();
     }); 
 
@@ -314,8 +313,7 @@ $(document).ready(function() {
         for (var i = 0; i < histogram.widthof; i++) {
             if (histogram.data1[i] > histogram.max) {
                 histogram.max = histogram.data1[i]
-            }
-            console.log(histogram.max);
+            }            
             histogram.context.fillRect(i, histogram.heightof,
                                        1, -histogram.data1[i] * 
                                        (histogram.heightof / (histogram.max)));
@@ -351,6 +349,14 @@ $(document).ready(function() {
                      (height / DIMENSIONS[1])];
         board.margin = [board.cell_size[0] / MARGIN_RATIO,
                         board.cell_size[1] / MARGIN_RATIO];
+    };
+
+    function populate_fixedqueue(size, value) {
+        ret = FixedQueue(size=size, initialValues=[]);
+        for (var x = 0; x < size; x++) {
+            ret.push(value);
+        };
+        return ret;
     };
 
 });
