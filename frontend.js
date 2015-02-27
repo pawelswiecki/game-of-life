@@ -201,6 +201,7 @@ $(document).ready(function() {
 
         board.is_running = false;
         histogram.data1 = populate_fixedqueue(size=histogram.widthof, value=0);
+        histogram.max = histogram.heightof;
         redraw_all();
     }); 
 
