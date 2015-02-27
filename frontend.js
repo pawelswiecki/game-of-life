@@ -1,4 +1,5 @@
-var DIMENSIONS = [75, 60];            
+var DIMENSIONS = [75, 60];
+var SIZE = DIMENSIONS[0] * DIMENSIONS[1];
 var MARGIN_RATIO = 10;
 var CANVAS_ID = "#canv1";
 
@@ -32,6 +33,8 @@ histogram.data1 = null;
 histogram.context = null; // $("#histogram")[0].getContext("2d");
 histogram.heightof = 0;
 histogram.widthof = 0;
+histogram.max = 0;
+
 
 
 // **************************************************************************
@@ -253,8 +256,7 @@ $(document).ready(function() {
     // function drawing real (living, dying or dead) and ghost cells
     // on canvas and updating living cells counter
     function redraw_all() {
-        var canvas = $(CANVAS_ID);
-        
+        var canvas = $(CANVAS_ID);        
 
         var width = $(window).width() - 600;
         var height = $(window).height() - 50;
@@ -304,14 +306,19 @@ $(document).ready(function() {
     function update_counter_and_histogram() {
         $("#counter").html(board.cells_alive);         
 
-        histogram.context.fillStyle = "#352879";
+        histogram.context.fillStyle = "#352879";        
         histogram.context.fillRect(0, 0, histogram.widthof, histogram.heightof);
 
         histogram.context.fillStyle = "#6C5EB5";
         
         for (var i = 0; i < histogram.widthof; i++) {
+            if (histogram.data1[i] > histogram.max) {
+                histogram.max = histogram.data1[i]
+            }
+            console.log(histogram.max);
             histogram.context.fillRect(i, histogram.heightof,
-                                       1, -histogram.data1[i]);
+                                       1, -histogram.data1[i] * 
+                                       (histogram.heightof / (histogram.max)));
         };
 
     };
@@ -342,7 +349,8 @@ $(document).ready(function() {
         
         board.cell_size = [(width / DIMENSIONS[0]), 
                      (height / DIMENSIONS[1])];
-        board.margin = [board.cell_size[0] / MARGIN_RATIO, board.cell_size[1] / MARGIN_RATIO];
+        board.margin = [board.cell_size[0] / MARGIN_RATIO,
+                        board.cell_size[1] / MARGIN_RATIO];
     };
 
 });

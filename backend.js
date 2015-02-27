@@ -100,6 +100,7 @@ function next_generation() {
 
     main_grid.contents = temp_grid.contents;
 
+    // adding # of living cells to histogram
     histogram.data1.unshift(board.cells_alive);
 }
 
