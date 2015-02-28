@@ -48,7 +48,7 @@ div.left {
     border-radius: 5px;
     float: left;
     background-color: #352879;
-    /*cursor: crosshair;*/
+    cursor: crosshair;
 }
 div.right {                
     text-align: center;
@@ -61,10 +61,20 @@ div.right-center {
     float: center;
                 
     border-radius: 5px;
-    margin-top: 10px;   
-    width: 450px; 
+    margin-top: 10px;
+    margin-left: 8px;   
+    width: 500px; 
     text-align: center;    
     padding: 20px;
+}
+
+div.top {
+    margin-top: 0px;
+}
+
+div.rules {
+    padding-left: 15px;
+    font-size: 12px;
 }
 
 .header1 {
@@ -90,14 +100,12 @@ div.right-center {
     font-size: 15px;
 }
 
-.block
-{
+.block {
     display:inline-block;
     width:10px;
 }
 
-.form
-{
+.form {
     font-family: "C64", monospace;
     width: 70px;
     background: #6C5EB5;
@@ -106,8 +114,7 @@ div.right-center {
     padding: 5px;
 }
 
-.button1
-{
+.button1 {
     font-family: "C64", monospace;
     color: #FFFFFF;
     cursor: pointer;
@@ -117,7 +124,6 @@ div.right-center {
     padding: 5px;
 }
 
-.drag-button
-{
+.drag-button {
     cursor: move;
 }

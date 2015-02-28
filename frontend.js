@@ -242,8 +242,8 @@ $(document).ready(function() {
     function redraw_all() {
         var canvas = $(CANVAS_ID);        
 
-        var width = $(window).width() - 600;
-        var height = $(window).height() - 50;
+        var width = $(window).width() - 580;
+        var height = $(window).height() - 27;
 
         board.cells_alive = 0;
 
@@ -283,14 +283,14 @@ $(document).ready(function() {
             };
         };
 
-        // updating cell counter        
+        // updating cell counter
         update_counter_and_histogram();
     };
 
     function update_counter_and_histogram() {
-        $("#counter").html(board.cells_alive);         
+        $("#counter").html(board.cells_alive);
 
-        histogram.context.fillStyle = "#352879";        
+        histogram.context.fillStyle = "#352879";
         histogram.context.fillRect(0, 0, histogram.widthof, histogram.heightof);
 
         histogram.context.fillStyle = "#6C5EB5";
