@@ -4,7 +4,7 @@
 
 The game is hosted [here](http://pawelswiecki.github.io/game-of-life/).
 
-With left mouse button you can animate dead cells, as well as kill living cells on board to the left. Use `Live` button to apply the following rules to them:
+With left mouse button you can,  on board to the left, animate dead cells, as well as kill living cells. Use `go` and `step` buttons to apply the following rules to them:
 
 * Alive cell dies if has fewer than two live neighbours (under-population).
 * Alive cell dies if has more than three live neighbours (overcrowding).
