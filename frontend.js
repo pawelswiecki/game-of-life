@@ -209,6 +209,12 @@ $(document).ready(function() {
         mouse.left_button_drag = true;
     });
 
+    $("#pattern-LWSS").mousedown(function() {        
+        mouse.dragged_pattern = patterns["LWSS"];
+        mouse.left_button_drag = true;
+    });
+
+
     // on window resize
     $(window).resize(function() {
         // calling it twice so scrollbar won't affect resizing
