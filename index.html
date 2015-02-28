@@ -24,28 +24,16 @@
             <div class="right-center top">
                 <span class="header1">Conway's Game of Life</span><br/><br/><br/>
                 <span>by <a id="mail" href="mailto:pawel.swiecki@gmail.com">pawel.swiecki@gmail.com</a></span>
-            </div>
-            
+            </div>            
             <br/>
+
             <div class="right-center">
-                <input id="live" class="button1 active" value="live!" type="button"/>
+                <span class="header3">Controls</span><br/><br/>
+                <input id="start-stop" class="button1 active" value=" go " type="button"/>
                 <span class="block"></span>
-                <input id="stop" class="button1 active" value="stop" type="button"/>
+                <input id="step" class="button1 active" value="step" type="button"/>
                 <span class="block"></span>
                 <input id="reset" class="button1 active" value="reset" type="button"/>
-            </div>
-
-            <br/>
-            <div class="right-center">
-                <div class="header3">Currently living: <span id="counter"></span></div><br/>
-
-                <canvas id="histogram" width="497" height="77">
-                    HTML5 Canvas not supported
-                </canvas></div>          
-            <br/>
-
-            <div class="right-center">
-                simulate <input id="form1" class="form" value="1" type="text"/> generation(s)
             </div>
             <br/>
 
@@ -57,9 +45,24 @@
                 <input id="pattern-r-pentomino" class="button1 active drag-button" value="r-pentomino" type="button"/>
             </div>
             <br/>
+
+            <div class="right-center">
+                <div class="header3">Facts</div><br/>
+                <div>Currently living: <span id="counter">0  </span></div><br/>
+                <div>Generations passed: <span id="generations">0  </span></div><br/>
+            </div>          
+            <br/>
+
+            <div class="right-center header3">
+                <div>Histogram<span id="counter"></span></div><br/>     
+                <canvas id="histogram" width="497" height="77">
+                    HTML5 Canvas not supported
+                </canvas>           
+            </div>
+            <br/>            
             
             <div class="right-center">
-                <span class="header3">Rules</span>
+                <span class="header3">Rules</span><br/><br/>
                 <div class="rules">
                     <ol class="list1" type="1">
                         <li>Alive cell dies if has fewer than two live neighbours (under-population).</li><br/>

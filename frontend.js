@@ -18,6 +18,7 @@ board.inter1; // interval for delay
 board.is_running = false;
 board.context = null; // $(CANVAS_ID)[0].getContext("2d");
 board.cells_alive = 0;
+board.round_nr = 0;
 
 var mouse = {};
 mouse.left_button_drawing = false;            
@@ -155,35 +156,24 @@ $(document).ready(function() {
     });
     
     // BUTTON EVENT HANDLERS
-    $("#live").click(function(event) {
-        var rounds = $("#form1").val();
-
-        function one_round() {
-            if (round_nr >= (rounds - 1)) {
-                clearInterval(board.inter1);
-                board.is_running = false;
-            };
-
-            // simulate next generation
-            next_generation();
-
-            // redraw canvas
-            redraw_all();                        
-
-            // increment round number
-            round_nr++;
-        };
-
-        if ((rounds > 0) && !board.is_running) {
+    $("#start-stop").click(function(event) {
+        if (board.is_running) {            
+            clearInterval(board.inter1);
+            board.is_running = false;
+            $("#start-stop").attr('value', ' go ');
+        }
+        else {
             board.is_running = true;
-            var round_nr = 0;
+            
             board.inter1 = setInterval(one_round, 0);            
+            $("#start-stop").attr('value', 'stop');
         };
     });
 
-    $("#stop").click(function(event) {
-        clearInterval(board.inter1);
-        board.is_running = false;
+    $("#step").click(function(event) {
+        if (!board.is_running) {
+            one_round();
+        };
     });
 
     $("#reset").click(function(event) {
@@ -193,6 +183,7 @@ $(document).ready(function() {
         board.is_running = false;
         histogram.data1 = populate_fixedqueue(size=histogram.widthof, value=0);
         histogram.max = histogram.heightof;
+        board.round_nr = 0;
         redraw_all();
     });     
 
@@ -225,10 +216,22 @@ $(document).ready(function() {
 
     // HELPER FUNCTIONS
 
+    // executes one round of the simulation
+    function one_round() {
+        // simulate next generation
+        next_generation();
+
+        // increment round number
+        board.round_nr++;
+
+        // redraw canvas
+        redraw_all();
+    };
+
     // translates canvas click coords to coords of grid
-    function pixel_coords_to_cell_coords(coords) {                
+    function pixel_coords_to_cell_coords(coords) {
         return [Math.floor(coords[0] / board.cell_size[0]),
-                Math.floor(coords[1] / board.cell_size[1])];                     
+                Math.floor(coords[1] / board.cell_size[1])];
     };
 
     // returns event coords relative to canvas
@@ -304,6 +307,7 @@ $(document).ready(function() {
                                        (histogram.heightof / (histogram.max)));
         };
 
+        $("#generations").html(board.round_nr);
     };
 
     // draws a cell on canvas
@@ -343,5 +347,4 @@ $(document).ready(function() {
         };
         return ret;
     };
-
 });
