@@ -35,7 +35,6 @@ histogram.widthof = 0;
 histogram.max = 0;
 
 
-
 // **************************************************************************
 // ******************************** FRONT-END *******************************
 // **************************************************************************
@@ -48,10 +47,12 @@ $(document).ready(function() {
     histogram.widthof = $('#histogram').width();
     histogram.heightof = $('#histogram').height();
     histogram.max = histogram.heightof;
-    histogram.data1 = populate_fixedqueue(size=histogram.widthof, value=0);
+    histogram.data1 = populate_fixedqueue(size=histogram.widthof, value=0);    
     
-    redraw_all();
+    $('#divcanv1').show();
 
+    redraw_all();
+    
     // HANDLERS
     $(CANVAS_ID).mousedown(function(event) {
         // left mouse button was pressed
@@ -137,6 +138,11 @@ $(document).ready(function() {
                 cell_off(main_grid, cell_coords);
             };                        
         };
+        redraw_all();
+    });
+
+    // redraws all on activate (strange issue with resizing and scrollbar)
+    $(window).focus(function(){
         redraw_all();
     });
 

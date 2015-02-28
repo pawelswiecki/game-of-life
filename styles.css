@@ -57,7 +57,7 @@ div.right {
 
 div.right-center {    
     background-color: #352879;
-    display:inline-block;
+    display: inline-block;
     float: center;
                 
     border-radius: 5px;
@@ -93,7 +93,7 @@ div.rules {
 }
 
 .list1 {
-    text-align:left
+    text-align: left
 }
 
 #mail {
@@ -102,7 +102,7 @@ div.rules {
 }
 
 .block {
-    display:inline-block;
+    display: inline-block;
     width:10px;
 }
 
