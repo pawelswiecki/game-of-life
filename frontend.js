@@ -2,8 +2,6 @@ var DIMENSIONS = [115, 80];
 var MARGIN_RATIO = 10;
 var CANVAS_ID = "#canv1";
 
-var HISTOGRAM_SIZE = 0;
-
 // LOGIC: 0 or 1 = dead; 2 = alive 
 // GRAPHICS: 0 = not visible; 1 and 2 = visible
 var Cellstate = {};
@@ -14,7 +12,7 @@ Cellstate.alive = 2;
 var board = {};
 board.cell_size = []; // array of x and y-size
 board.margin; // array of x and y-dimensions
-board.inter1; // interval for delay
+board.inter1; // interval
 board.is_running = false;
 board.context = null; // $(CANVAS_ID)[0].getContext("2d");
 board.cells_alive = 0;
@@ -164,33 +162,28 @@ $(document).ready(function() {
     // BUTTON EVENT HANDLERS
     $("#start-stop").click(function(event) {
         if (board.is_running) {            
-            clearInterval(board.inter1);
-            board.is_running = false;
-            $("#start-stop").attr('value', ' go ');
+            make_it_stop();
         }
         else {
-            board.is_running = true;
-            
-            board.inter1 = setInterval(one_round, 0);            
-            $("#start-stop").attr('value', 'stop');
+            make_it_start(); 
         };
     });
 
-    $("#step").click(function(event) {
+    $("#step").click(function(event) {        
         if (!board.is_running) {
-            one_round();
+            one_round();        
         };
+        make_it_stop();
     });
 
     $("#reset").click(function(event) {
-        clearInterval(board.inter1);
-        main_grid = new Grid(DIMENSIONS, Cellstate.dead);                    
+        make_it_stop();
 
-        board.is_running = false;
+        main_grid = new Grid(DIMENSIONS, Cellstate.dead);                            
         histogram.data1 = populate_fixedqueue(size=histogram.widthof, value=0);
         histogram.max = histogram.heightof;
         board.round_nr = 0;
-        $("#start-stop").attr('value', ' go ');
+
         redraw_all();
     });     
 
@@ -235,6 +228,18 @@ $(document).ready(function() {
 
         // redraw canvas
         redraw_all();
+    };
+
+    function make_it_stop() {
+        clearInterval(board.inter1);
+        board.is_running = false;
+        $("#start-stop").attr('value', ' go ');
+    };
+
+    function make_it_start() {
+        board.is_running = true;
+        board.inter1 = setInterval(one_round, 0);
+        $("#start-stop").attr('value', 'stop');
     };
 
     // translates canvas click coords to coords of grid
