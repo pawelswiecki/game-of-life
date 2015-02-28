@@ -211,6 +211,8 @@ $(document).ready(function() {
 
     // on window resize
     $(window).resize(function() {
+        // calling it twice so scrollbar won't affect resizing
+        redraw_all();
         redraw_all();
     });
 
