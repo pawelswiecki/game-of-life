@@ -190,6 +190,7 @@ $(document).ready(function() {
         histogram.data1 = populate_fixedqueue(size=histogram.widthof, value=0);
         histogram.max = histogram.heightof;
         board.round_nr = 0;
+        $("#start-stop").attr('value', ' go ');
         redraw_all();
     });     
 
