@@ -137,7 +137,7 @@ $(document).ready(function() {
                 cell_off(main_grid, cell_coords);
             };                        
         };
-        redraw_all();                    
+        redraw_all();
     });
 
     // disabling right mouse click on canvas
@@ -241,7 +241,7 @@ $(document).ready(function() {
     };           
 
     // function drawing real (living, dying or dead) and ghost cells
-    // on canvas and calling update_counter_and_histogram()
+    // on canvas and calling update_counters_and_histogram()
     function redraw_all() {
         var canvas = $(CANVAS_ID);        
 
@@ -287,10 +287,10 @@ $(document).ready(function() {
         };
 
         // updating cell counter
-        update_counter_and_histogram();
+        update_counters_and_histogram();
     };
 
-    function update_counter_and_histogram() {
+    function update_counters_and_histogram() {
         $("#counter").html(board.cells_alive);
 
         histogram.context.fillStyle = "#352879";
